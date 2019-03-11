@@ -184,12 +184,46 @@ window.onload = function (){
 
         var button = document.createElement('a');
         button.href = rifa.url;
+        button.target = '_blank';
         button.className = 'btn btn-block';
-        button.textContent = rifa.url;
+        
+        if (rifa.Opens === 'live') {
+            button.textContent = 'ENTER RAFFLE';
+            button.classList.add('btn-success');
+        }
+
+        if (rifa.Closes === 'closed') {
+            button.textContent = 'CLOSED';
+            button.classList.add('btn-danger');
+        }
+
+        if (rifa.Opens === 'announced') {
+            button.textContent = 'ANNOUNCED';
+            button.classList.add('btn-secondary');
+            button.disabled = true;
+        }
 
         return button;
     }
 
     addRifas(datos.sole.raffles);
+
+    function addTransitionEfect() {
+        var links = document.querySelectorAll('a.btn');
+
+        links.forEach( link => {
+            link.addEventListener("mouseover", mouserOver(link));
+            link.addEventListener("moseout", mouserOut(link));
+        })
+    }
+
+    function mouseOver(link) {
+        console.log(link)
+    }
+    function mouseOut(link) {
+        console.log('Out ofr:'+link)
+    }
+
+    addTransitionEfect();
 }
 },{"../data/raffles.js":1}]},{},[2]);

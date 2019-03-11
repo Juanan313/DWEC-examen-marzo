@@ -10,3 +10,12 @@
 .card-text span {
     color: rgb(78, 78, 78);
 }
+
+a .btn {
+    transition: width 1s;
+}
+
+.hoverAnchors {
+    opacity: 0.5;
+    zoom: 1.1;
+}
