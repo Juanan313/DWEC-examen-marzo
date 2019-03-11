@@ -7,6 +7,7 @@ function addRifas(data) {
         // primero creo el contenedor de cada rifa y le asigno la clase bootstrap correspondiente
         var card = document.createElement('div');
         card.className = "card";
+        card.id = rifa;
         var cardBody = document.createElement('div');
         cardBody.className = "card-body";   
 

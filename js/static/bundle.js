@@ -105,8 +105,25 @@ window.onload = function (){
     showZapa(datos.sole.shoe);
 
     showRifas(datos.sole.raffles);
-    
+
     addTransitionEfect();
+
+    function addEnteredMark() {
+        var card = document.querySelectorAll('.card');
+
+        card.forEach( card => {
+            var enteredMark = document.createElement('p');
+            enteredMark.className = 'enteredMark mx-auto';
+
+            enteredMark.textContent = 'Mark as entered';
+            var icon = document.createElement('i');
+            icon.className = 'fa fa-star ml-1';
+            enteredMark.appendChild(icon);
+            card.appendChild(enteredMark);
+        });
+    };
+
+    addEnteredMark();
 }
 },{"../data/raffles.js":1,"./module/raffles":3,"./module/shoe.js":4,"./module/transitionEfect":5}],3:[function(require,module,exports){
 function addRifas(data) {
@@ -118,6 +135,7 @@ function addRifas(data) {
         // primero creo el contenedor de cada rifa y le asigno la clase bootstrap correspondiente
         var card = document.createElement('div');
         card.className = "card";
+        card.id = rifa;
         var cardBody = document.createElement('div');
         cardBody.className = "card-body";   
 
