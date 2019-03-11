@@ -110,6 +110,31 @@ window.onload = function (){
 
     addEnteredMark();
 
+    function filterCards() {
+        var raffles = datos.sole.raffles;
+        var properties = Object.getOwnPropertyNames(raffles);
+        var filters = [];
+
+        for (let i=0; i<properties.length; i++) {
+            filters.push(raffles[properties[i]].country);
+            filters.push(raffles[properties[i]].purchase);
+        }
+        filters = uniqueArray(filters);
+
+        filters.forEach( filter => {
+            var span = $('<span></span>');
+            span.addClass('badge').addClass('badge-default').addClass('p-2').html(filter);
+            $('#filters').append(span);
+        })
+    }
+
+    var uniqueArray = function(arrArg) {
+        return arrArg.filter(function(elem, pos,arr) {
+          return arr.indexOf(elem) == pos;
+        });
+      };
+    filterCards();
+
 }
 },{"../data/raffles.js":1,"./module/enteredMark":3,"./module/raffles":4,"./module/shoe.js":5,"./module/transitionEfect":6}],3:[function(require,module,exports){
 function addEnteredMark() {
