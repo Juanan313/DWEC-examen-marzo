@@ -139,15 +139,38 @@ window.onload = function (){
             img.className = "card-img-top";
             card.appendChild(img);
 
+            // títlo de cada rifa
             var title = document.createElement('h3');
             title.className = "card-title";
             title.textContent = rifa;
             cardBody.appendChild(title);
 
+            cardBody.appendChild(rifasDetalles(data[rifa]));
+
             // finalmente añadimos card a nuestro contenedor de rifas
             card.appendChild(cardBody);
             contenedor.appendChild(card);
         });
+    }
+
+    function rifasDetalles(rifa) {
+        var detalles = ['country','purchase', 'collection', 'Sizes', 'Opens', 'Closes'];
+        var parrafo = document.createElement('p');
+        parrafo.className = 'card-text';
+        detalles.forEach( detail => {
+            var span = document.createElement('span');
+            var texto = rifa[detail]
+            if (detail !== 'Opens' || detail !== 'Closes') {
+                span.textContent = texto;
+            } else {
+                detail === 'Opens' ? span.textContent = 'Opens - '+ texto : span.textContent = 'Closes - '+texto;
+            }
+            span.className = 'd-block';
+
+            parrafo.appendChild(span);
+        });
+
+        return parrafo;
     }
 
     addRifas(datos.sole.raffles);
