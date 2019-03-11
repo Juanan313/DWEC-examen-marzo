@@ -33,7 +33,7 @@ window.onload = function (){
         titles.forEach(rifa => {
             // primero creo el contenedor de cada rifa y le asigno la clase bootstrap correspondiente
             var card = document.createElement('div');
-            card.className = "card col-3";
+            card.className = "card";
             var cardBody = document.createElement('div');
             cardBody.className = "card-body";   
 
@@ -59,7 +59,10 @@ window.onload = function (){
             
             // finalmente añadimos card a nuestro contenedor de rifas
             card.appendChild(cardBody);
-            contenedor.appendChild(card);
+            var columna = document.createElement('div');
+            columna.className = 'col-3 mt-2';
+            columna.appendChild(card);
+            contenedor.appendChild(columna);
         });
     }
 
