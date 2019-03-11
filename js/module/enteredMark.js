@@ -4,7 +4,7 @@ function addEnteredMark() {
     card.forEach( card => {
         var enteredMark = document.createElement('p');
         enteredMark.className = 'enteredMark mx-auto';
-
+        enteredMark.id = card.id;
         enteredMark.textContent = 'Mark as entered';
         var icon = document.createElement('i');
         if (localStorage.getItem(card.id)) {

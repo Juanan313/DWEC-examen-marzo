@@ -110,6 +110,26 @@ window.onload = function (){
     addTransitionEfect();
 
     addEnteredMark();
+
+    function enteredMarkLogic() {
+        var marks = document.querySelectorAll('.enteredMark');
+
+        marks.forEach( mark => {
+            mark.addEventListener('click', function() {
+                if (localStorage.getItem(mark.id)) {
+                    localStorage.removeItem(mark.id);
+                    mark.lastChild.className = 'far fa-star ml-1';
+                } else {
+                    localStorage.setItem(mark.id, true) 
+                    mark.lastChild.className = 'fa fa-star ml-1';
+                }
+            });
+        })
+
+            
+    }
+
+    enteredMarkLogic();
 }
 },{"../data/raffles.js":1,"./module/enteredMark":3,"./module/raffles":4,"./module/shoe.js":5,"./module/transitionEfect":6}],3:[function(require,module,exports){
 function addEnteredMark() {
@@ -118,7 +138,7 @@ function addEnteredMark() {
     card.forEach( card => {
         var enteredMark = document.createElement('p');
         enteredMark.className = 'enteredMark mx-auto';
-
+        enteredMark.id = card.id;
         enteredMark.textContent = 'Mark as entered';
         var icon = document.createElement('i');
         if (localStorage.getItem(card.id)) {
