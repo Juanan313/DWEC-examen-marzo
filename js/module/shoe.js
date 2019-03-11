@@ -17,4 +17,4 @@ var mostrarZapa = function(zapa) {
     contenedor.appendChild(detalles);
 }
 
-exports.mostrarZapa();
+module.exports = mostrarZapa;
