@@ -101,6 +101,8 @@ var addTransitionEfect = require('./module/transitionEfect');
 var addEnteredMark = require('./module/enteredMark');
 
 window.onload = function (){
+    var rifas = datos.sole.raffles;
+    var rifasNombres = Object.getOwnPropertyNames(rifas);
 
     showZapa(datos.sole.shoe);
 
@@ -133,6 +135,28 @@ window.onload = function (){
           return arr.indexOf(elem) == pos;
         });
       };
+
+    function filterLogic() {
+        var filters = document.getElementsByClassName('badge');
+
+        // filters.forEach( filter => {
+        //     filter.addEventListener( 'click', function() {
+
+        //     })
+        // })
+        // console.log(filters);
+    }
+
+    // function filterRaffles(element) {
+    //     // rifasNombres.forEach( nombre => {
+    //     //     var rifa = rifas[nombre];
+    //     //     if (rifa.)
+    //     // })
+        
+    // }
+
+    filterLogic();
+
     filterCards();
 
 }
