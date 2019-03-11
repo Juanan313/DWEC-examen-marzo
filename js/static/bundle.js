@@ -98,6 +98,7 @@ var datos = require('../data/raffles.js');
 var showZapa = require('./module/shoe.js');
 var showRifas = require('./module/raffles');
 var addTransitionEfect = require('./module/transitionEfect');
+var addEnteredMark = require('./module/enteredMark');
 
 window.onload = function (){
     // mostrar.mostrarZapa(datos.sole.shoe);
@@ -108,24 +109,30 @@ window.onload = function (){
 
     addTransitionEfect();
 
-    function addEnteredMark() {
-        var card = document.querySelectorAll('.card');
-
-        card.forEach( card => {
-            var enteredMark = document.createElement('p');
-            enteredMark.className = 'enteredMark mx-auto';
-
-            enteredMark.textContent = 'Mark as entered';
-            var icon = document.createElement('i');
-            icon.className = 'fa fa-star ml-1';
-            enteredMark.appendChild(icon);
-            card.appendChild(enteredMark);
-        });
-    };
-
     addEnteredMark();
 }
-},{"../data/raffles.js":1,"./module/raffles":3,"./module/shoe.js":4,"./module/transitionEfect":5}],3:[function(require,module,exports){
+},{"../data/raffles.js":1,"./module/enteredMark":3,"./module/raffles":4,"./module/shoe.js":5,"./module/transitionEfect":6}],3:[function(require,module,exports){
+function addEnteredMark() {
+    var card = document.querySelectorAll('.card');
+
+    card.forEach( card => {
+        var enteredMark = document.createElement('p');
+        enteredMark.className = 'enteredMark mx-auto';
+
+        enteredMark.textContent = 'Mark as entered';
+        var icon = document.createElement('i');
+        if (localStorage.getItem(card.id)) {
+            icon.className = 'fa fa-star ml-1';
+        } else {
+            icon.className = 'far fa-star ml-1';
+        }
+        enteredMark.appendChild(icon);
+        card.appendChild(enteredMark);
+    });
+};
+
+module.exports = addEnteredMark;
+},{}],4:[function(require,module,exports){
 function addRifas(data) {
 
     var contenedor = document.getElementById('rifas');
@@ -215,7 +222,7 @@ function mostrarBoton(rifa) {
 }
 
 module.exports = addRifas;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var mostrarZapa = function(zapa) {
     // buscamos el elemento donde insertaremos los datos
     var contenedor = document.getElementById('datosZapa');
@@ -236,7 +243,7 @@ var mostrarZapa = function(zapa) {
 }
 
 module.exports = mostrarZapa;
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 function addTransitionEfect() {
     var links = document.querySelectorAll('a.btn');
 
