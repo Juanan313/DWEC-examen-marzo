@@ -64,7 +64,7 @@ window.onload = function (){
         detalles.forEach( detail => {
             var span = document.createElement('span');
             var texto = rifa[detail]
-            if (detail !== 'Opens' || detail !== 'Closes') {
+            if (detail !== 'Opens' && detail !== 'Closes') {
                 span.textContent = texto;
             } else {
                 detail === 'Opens' ? span.textContent = 'Opens - '+ texto : span.textContent = 'Closes - '+texto;
