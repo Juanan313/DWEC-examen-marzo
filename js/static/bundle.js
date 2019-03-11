@@ -214,12 +214,11 @@ window.onload = function (){
         var links = document.querySelectorAll('a.btn');
 
         links.forEach( link => {
-            var currentClasses = link.classList;
             link.addEventListener("mouseover", function() {
-                console.log(link);
+                $(link).addClass('hoverAnchors');
             });
             link.addEventListener("mouseout", function(){
-                link.classList = currentClasses;
+                $(link).removeClass('hoverAnchors');
             });
         })
     }
