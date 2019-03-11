@@ -145,9 +145,16 @@ window.onload = function (){
             title.textContent = rifa;
             cardBody.appendChild(title);
 
+            // Añadimos el texto de los detalles al body
             cardBody.appendChild(rifasDetalles(data[rifa]));
 
+            var footer = document.createElement('div');
+            footer.className = 'card-footer';
+            footer.appendChild(mostrarBoton(data[rifa]));
+
+            
             // finalmente añadimos card a nuestro contenedor de rifas
+            cardBody.appendChild(footer);
             card.appendChild(cardBody);
             contenedor.appendChild(card);
         });
@@ -171,6 +178,16 @@ window.onload = function (){
         });
 
         return parrafo;
+    }
+
+    function mostrarBoton(rifa) {
+
+        var button = document.createElement('a');
+        button.href = rifa.url;
+        button.className = 'btn btn-block';
+        button.textContent = rifa.url;
+
+        return button;
     }
 
     addRifas(datos.sole.raffles);
