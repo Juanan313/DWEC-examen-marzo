@@ -2,6 +2,8 @@ Raffle in the JSungle
 =====================
 #### Examen JS client-side DWEC Dual Febrero 2019
 
+[Link índice](https://juanan313.github.io/DWEC-examen-marzo/index.html)
+
 Jerry es un aficionado a coleccionar _sneakers_ de edición limitada. Para ello, ha de aplicar a las rifas que organizan las distintas tiendas de zapas.
 
 Rifas hay muchas, y si introduce los datos por duplicado, lo descalifican.
