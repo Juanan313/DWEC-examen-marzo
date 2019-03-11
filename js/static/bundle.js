@@ -148,13 +148,12 @@ window.onload = function (){
             // Añadimos el texto de los detalles al body
             cardBody.appendChild(rifasDetalles(data[rifa]));
 
-            var footer = document.createElement('div');
-            footer.className = 'card-footer';
-            footer.appendChild(mostrarBoton(data[rifa]));
+            // var footer = document.createElement('div');  HE DECIDIDO NO UTILIZARLO AL FINAL
+            // footer.className = 'card-footer';
+            cardBody.appendChild(mostrarBoton(data[rifa]));
 
             
             // finalmente añadimos card a nuestro contenedor de rifas
-            cardBody.appendChild(footer);
             card.appendChild(cardBody);
             contenedor.appendChild(card);
         });
@@ -212,16 +211,14 @@ window.onload = function (){
         var links = document.querySelectorAll('a.btn');
 
         links.forEach( link => {
-            link.addEventListener("mouseover", mouserOver(link));
-            link.addEventListener("moseout", mouserOut(link));
+            var currentClasses = link.classList;
+            link.addEventListener("mouseover", function() {
+                console.log(link);
+            });
+            link.addEventListener("mouseout", function(){
+                link.classList = currentClasses;
+            });
         })
-    }
-
-    function mouseOver(link) {
-        console.log(link)
-    }
-    function mouseOut(link) {
-        console.log('Out ofr:'+link)
     }
 
     addTransitionEfect();
