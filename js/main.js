@@ -24,4 +24,35 @@ window.onload = function (){
     }
 
     mostrarZapa(datos.sole.shoe);
+
+    function addRifas(data) {
+
+        var contenedor = document.getElementById('rifas');
+        var titles = Object.getOwnPropertyNames(data);
+        
+        titles.forEach(rifa => {
+            // primero creo el contenedor de cada rifa y le asigno la clase bootstrap correspondiente
+            var card = document.createElement('div');
+            card.className = "card col-3";
+            var cardBody = document.createElement('div');
+            cardBody.className = "card-body";   
+
+            // después añadimos la imagen y la insertamos en el contenedor card
+            var img = document.createElement('img');
+            img.setAttribute('src',data[rifa].logo);
+            img.className = "card-img-top";
+            card.appendChild(img);
+
+            var title = document.createElement('h3');
+            title.className = "card-title";
+            title.textContent = rifa;
+            cardBody.appendChild(title);
+
+            // finalmente añadimos card a nuestro contenedor de rifas
+            card.appendChild(cardBody);
+            contenedor.appendChild(card);
+        });
+    }
+
+    addRifas(datos.sole.raffles);
 }
