@@ -115,11 +115,10 @@ window.onload = function (){
     function filterCards() {
         var raffles = datos.sole.raffles;
         var properties = Object.getOwnPropertyNames(raffles);
-        var filters = [];
+        var filters = ['Post', 'Collect', 'Raffle', 'FCFS'];
 
         for (let i=0; i<properties.length; i++) {
             filters.push(raffles[properties[i]].country);
-            filters.push(raffles[properties[i]].purchase);
         }
         filters = uniqueArray(filters);
 
@@ -137,16 +136,12 @@ window.onload = function (){
       };
 
     function filterLogic() {
-        var filters = document.getElementsByClassName('badge');
-
-        // filters.forEach( filter => {
-        //     filter.addEventListener( 'click', function() {
-
-        //     })
-        // })
-        // console.log(filters);
+        $(".badge").click(function () {
+            if ($(this).html === 'All') { return false; }
+            $(this).toggleClass('badge-success');
+            $(this).toggleClass('badge-default');
+        });
     }
-
     // function filterRaffles(element) {
     //     // rifasNombres.forEach( nombre => {
     //     //     var rifa = rifas[nombre];
@@ -155,9 +150,9 @@ window.onload = function (){
         
     // }
 
-    filterLogic();
-
+    
     filterCards();
+    filterLogic();
 
 }
 },{"../data/raffles.js":1,"./module/enteredMark":3,"./module/raffles":4,"./module/shoe.js":5,"./module/transitionEfect":6}],3:[function(require,module,exports){
